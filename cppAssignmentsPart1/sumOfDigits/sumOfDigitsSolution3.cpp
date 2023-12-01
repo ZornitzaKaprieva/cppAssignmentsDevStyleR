@@ -24,7 +24,7 @@ int main()
 
         if (thirdDigit != 3)
         {
-            if (result == input) // Принтира се сумата на на цифрите на input и първото число от интервала, чиято сума от цифри съвпада с тази на input и изпълнението програмата приключва.
+            if (result == input) // Принтира се сумата на на цифрите на input и първото число от интервала, чиято сума от цифри съвпада с въведеното от потребителя число и изпълнението програмата приключва.
             {
                 cout << "The number is " << input << "." << endl;
                 cout << "There is a match between the entered number and the sum of the digits of " << i << ", which is " << result << "." << endl;
