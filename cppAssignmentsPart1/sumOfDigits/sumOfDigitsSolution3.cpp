@@ -11,7 +11,7 @@ int main()
     /*РЕШЕНИЕ 3: В случай, че проверяваме, дали въведеното от потребителя число е равно на някоя от получените суми*/
 
     int input;
-    cout << "Enter a 3 digit number to be checked: ";
+    cout << "Enter a number to be checked: ";
     cin >> input;
 
     bool isMatch = false;
