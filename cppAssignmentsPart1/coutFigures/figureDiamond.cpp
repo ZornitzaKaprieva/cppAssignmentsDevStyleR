@@ -18,15 +18,19 @@ int main()
     {
 
         int rows;
-        cout << "How many rows do you want the diamond to be? Enter an odd number:" << endl;
+        cout << "How many rows do you want the diamond to be? Enter an odd number: ";
         cin >> rows;
 
         while (rows % 2 == 0) // Проверяваме дали въведеният брой редове е четен.
         {
-            cout << "Enter an odd number:" << endl;
+            cout << "Enter an odd number: ";
             cin >> rows;
         }
-        
+
+        char symbol;
+        cout << "Which symbol do you want to use in the diamond?: ";
+        cin >> symbol;
+
         system("cls");
 
         // FOR1 (increment): подравняваме горната част на диаманта (под формата на пирамида).
@@ -39,7 +43,7 @@ int main()
 
             for (int j = 1; j <= i; j++)
             {
-                cout << "*";
+                cout << symbol;
             }
             cout << endl;
         }
@@ -53,7 +57,7 @@ int main()
             }
             for (int j = 1; j <= i; j++)
             {
-                cout << "*";
+                cout << symbol;
             }
             cout << endl;
         }
