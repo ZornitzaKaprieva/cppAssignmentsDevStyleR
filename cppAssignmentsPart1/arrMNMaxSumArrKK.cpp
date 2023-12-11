@@ -68,7 +68,7 @@ int main()
                     cout << matrix[i2][j2] << " "; // Извеждане на елементите на subMatrix[k][k]
                     currentSum += matrix[i2][j2];  // Добавяме всеки елемент от subMatrix[k][k] към настоящата сума.
                 }
-                cout << endl; // нов ред след всeки matrix[i2][j2] за пригледност.
+                cout << endl; // нов ред след всeки matrix[i2][j2] за прегледност.
             }
 
             if (maxSum < currentSum) // Ако настоящата сума на елементите от subMatrix[k][k] е по-голяма от сумата в контейнера maxSum, то тя става неговата нова стойност.
@@ -77,7 +77,7 @@ int main()
             cout << "currentSum: " << currentSum << endl;
             currentSum = 0; // Нулираме резултата за настояща сума, за да може изчислнието на следващата сума на subMatrix[k][k] да започне от нула.
 
-            cout << endl; // нов ред след всяка subMatrix[k][k] за пригледност.
+            cout << endl; // нов ред след всяка subMatrix[k][k] за прегледност.
         }
     }
 
