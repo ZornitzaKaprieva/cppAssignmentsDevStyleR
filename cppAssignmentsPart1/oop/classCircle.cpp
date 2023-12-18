@@ -17,8 +17,48 @@ public:
     {
     }
 
+    // setter area
+    void setArea(double _radius)
+    {
+        if (radius <= 0)
+        {
+            cout << "The radius cannot be 0 or negative number!" << endl;
+        }
+        else
+        {
+            double area = M_PI * radius * radius;
+            this->radius = _radius;
+        }
+    }
+
+    // getter area:
+    double getArea()
+    {
+        return M_PI * radius * radius;
+    }
+
+    // setter perimeter:
+    void setPerimeter(double _radius)
+    {
+        if (radius <= 0)
+        {
+            cout << "The radius cannot be 0 or negative number!" << endl;
+        }
+        else
+        {
+            double perim = 2 * M_PI * radius;
+            this->radius = _radius;
+        }
+    }
+
+    // getter perimeter:
+    double getPerimeter()
+    {
+        return 2 * M_PI * radius;
+    }
+
     // Изчисляване на площта чрез формулата S = π * r*r (за първи конструктор)
-    void setArea()
+    void calculateArea()
     {
         if (radius <= 0)
         {
@@ -31,8 +71,8 @@ public:
         }
     }
 
-    // Изчисляване на обиколката чрез формулата С = 2*π*r (за първи конструктор)
-    void setPerim()
+    // Изчислване на обиколката чрез формулата С = 2*π*r (за първи конструктор)
+    void calculatePerimeter()
     {
 
         if (radius <= 0)
@@ -67,7 +107,7 @@ public:
     void printResult()
     {
         double area = M_PI * radius * radius;
-        cout << "The radius of the circle is " << area << endl;
+        cout << "The area of the circle is " << area << endl;
         double perim = 2 * M_PI * radius;
         cout << "The perimeter of the circle is " << perim << endl;
     }
@@ -80,12 +120,22 @@ int main()
 {
 
     Circle circle1(3); // с първи конструктор
-    circle1.setArea();
-    circle1.setPerim();
+    circle1.calculateArea();
+    circle1.calculatePerimeter();
+    cout << circle1.getArea() << endl;
+    cout << circle1.getPerimeter() << endl;
+    circle1.setArea(16);
+    circle1.setPerimeter(16);
+    cout << circle1.getArea() << endl;
+    cout << circle1.getPerimeter() << endl;
 
     Circle circle2; // с втори конструктор
     circle2.setValue();
     circle2.printResult();
+    circle2.setArea(14);
+    circle2.setPerimeter(14);
+    cout << "Area: " << circle2.getArea() << endl;
+    cout << "Perimeter: " << circle2.getPerimeter() << endl;
 
     return 0;
 }
