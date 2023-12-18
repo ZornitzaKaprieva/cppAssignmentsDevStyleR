@@ -2,9 +2,6 @@ C++ assignments from the Programming with C++ course
 
 Educational organization: DevStyleR
 
-Main subjects/professional skills covered: • Acquired basic C++ programming skills.
-
 Experience with: 
-
-• console (input and output of data); • simple calculations; • conditional operators and logical checks (if, if-else, switch); • loops and complex loops (for loop, while loop, nested loops); • One-Dimensional Arrays; • Two-Dimensional Arrays; • Two-Dimensional Arrays;  
+• Console (input and output of data); • Simple calculations; • Conditional operators and logical checks (if, if-else, switch); • Loops (for loop, while loop, nested loops); • Arrays (one-dimensional arrays, two-dimensional arrays; • Two-Dimensional Arrays;  
 • Functions; • Classes; • Objects; • OOP;
