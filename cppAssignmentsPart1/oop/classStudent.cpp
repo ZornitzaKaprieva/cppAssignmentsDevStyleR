@@ -9,14 +9,14 @@ using namespace std;
 
 1. Създадени са два конструктора - един с параметри и един - без.
 
-2. С функцията void setInfo()) могат да се въведат следните данни за студента: име, фамилия, град, ЕГН, дата на раждане.
+2. С функцията void setInfo()) могат да се въведат следните данни за студента: име, фамилия, град, ЕГН и дата на раждане.
 
-2.1. За стринговете име, фамилия и град: 
+2.1. За стринговете име, фамилия и град:
 При всеки един инпут, се прави проверка за валидност - дали са по-дълги от 2 символа и дали съдържат цифри.
 Данните се въвеждат, докато се въведат валидни.
 
 2.2. За стринг ЕГН:
-При въвеждането на ЕГН се прави проверка дали въведените цифри за 10.
+При въвеждането на ЕГН се прави проверка дали въведените цифри са 10.
 Цифрите от ЕГН се въвеждат, докато се въведат валидни данни.
 
 2.3. За ден + месец и година на раждане:
@@ -25,9 +25,9 @@ using namespace std;
 
 3. Създадени са гетери за име + фамилия (общо един гетер), както и за града, ЕГН-то и датата на раждане.
 
-4. Използвани са функциите void printNameBirthDate() и void printAllInfo() за принтиране на различна информация, след въвеждане на данните. 
+4. Използвани са функциите void printNameBirthDate() и void printAllInfo() за принтиране на различна информация, след въвеждане на данните.
 
-5. Функцията void birthDate() организира въведените данни за дата на раждане в формат, подходящ за дата.
+5. Функцията void birthDate() организира въведените данни за ден, месец и година на раждане в формат, подходящ за дата - дд/мм/гг.
 
 6. Функцията void compareTinAndDate(string &_tin, int &_dayOfBirth, int &_monthOfBirth, int &_yearOfBirth)
 Има за цел да сравни цифрите в ЕГН с тези от датата на раждане. Ако има разминаване, данните се въвеждат отново до съвпадение на първите 6 цифри от TIN и датата на раждане*/
@@ -61,7 +61,7 @@ public:
     // Принтира цялата въведна информация за студента.
     void printAllInfo()
     {
-         cout << "Name: " << getName() << endl;
+        cout << "Name: " << getName() << endl;
         cout << "City: " << city << endl;
         cout << "TIN: " << tin << endl;
         birthDate(); // cout << "Date of Birth: " << dayOfBirth << "/" << monthOfBirth << "/" << yearOfBirth << endl;
@@ -85,7 +85,7 @@ public:
     }
 
     // setter firstName //Няма да има гетери само за firstName
-   string setFirstName(string &_firstName)
+    string setFirstName(string &_firstName)
     {
         int length;
         int checkResult;
@@ -96,18 +96,18 @@ public:
             cin >> firstName;
             length = firstName.length(); // firstName.size();
 
-            // Проверяваме дали в стринга e по-дълъг от 2 символа. Ако е така, следва да се въведе firstName отново
+            // Проверяваме дали стрингът e по-къс от 2 символа. Ако е така, следва да се въведе firstName отново
             if (length < 2)
             {
                 cout << "Please enter min. 2 characters for first name! ";
             }
 
-            // Проверяваме дали в стринга се съдържат числа. Ако е така, следва да се въведе lastName отново
+            // Проверяваме дали в стринга се съдържат числа. Ако е така, следва да се въведе firstName отново
             checkResult = 0;
             for (int i = 0; i < length; i++)
             {
                 int check = 0;
-                check = isdigit(firstName[i]); // проверяваме, дали city[i] е цифра
+                check = isdigit(firstName[i]); // проверяваме, дали firstName[i] е цифра
                 if (check)
                 {
                     checkResult += check;
@@ -137,7 +137,7 @@ public:
             cin >> lastName;
             length = lastName.length();
 
-            // Проверяваме дали в стринга e по-дълъг от 2 символа. Ако е така, следва да се въведе lastName отново
+            // Проверяваме дали стрингът e по-къс от 2 символа. Ако е така, следва да се въведе lastName отново
             if (length < 2)
             {
                 cout << "Please enter min. 2 characters for last name! ";
@@ -148,7 +148,7 @@ public:
             for (int i = 0; i < length; i++)
             {
                 int check = 0;
-                check = isdigit(lastName[i]); // проверяваме, дали city[i] е цифра
+                check = isdigit(lastName[i]); // проверяваме, дали lastName[i] е цифра
                 if (check)
                 {
                     checkResult += check;
@@ -167,12 +167,13 @@ public:
         this->lastName = _lastName;
     }
 
-//getter firstName + lastName
-string getName()
-{
+    // getter firstName + lastName
+    string getName()
+    {
 
-    return firstName + " " + lastName;
-}
+        return firstName + " " + lastName;
+    }
+
     // setter city
     string setCity(string &_city)
     {
@@ -185,7 +186,7 @@ string getName()
             cin >> city;
             length = city.length();
 
-            // Проверяваме дали в стринга e по-дълъг от 2 символа. Ако е така, следва да се въведе city отново
+            // Проверяваме дали стрингът e по-къс от 2 символа. Ако е така, следва да се въведе city отново
 
             if (length < 2)
             {
@@ -259,12 +260,12 @@ string getName()
         cout << "Date of Birth: " << getDayOfBirth() << "/" << getMonthOfBirth() << "/" << getYearOfBirth() << endl;
     }
 
-    // setter за dayOfBirth + monthOfBirth
+    // setter за dayOfBirth + monthOfBirth. Тук проверяваме какви числа са въведени за ден и месец на раждане. Ако се наевлидни се извежда подходящо съобщение и do-while цикъла се повтаря.
     // Без референцията &_dayOfBirth и int &_monthOfBirth не извеждат стойностита на въведоните числа.
 
     void setDayAndMonthOfBirth(int &_dayOfBirth, int &_monthOfBirth)
     {
-        int monthsSize[12] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+        int monthsSize[12] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}; // колко дни съдържа всеки месец
         do
         {
             cout << "Enter a day: ";
@@ -272,15 +273,15 @@ string getName()
             cout << "Enter a month: ";
             cin >> monthOfBirth;
 
-            if (dayOfBirth < 1 || dayOfBirth > monthsSize[monthOfBirth - 1])
+            if (dayOfBirth < 1 || dayOfBirth > monthsSize[monthOfBirth - 1]) // проверяваме дали въведеният ден на раждане е по-малък от 0 или по-голям от дните на въведения месец
             {
                 cout << "Please enter a valid day of birth! ";
             }
 
-            if (monthOfBirth < 1 || monthOfBirth > 12)
+            if (monthOfBirth < 1 || monthOfBirth > 12) // проверяваме дали въведеният месец на раждане е по-малък от 0 или по-голям от 12
                 cout << "Please enter a valid month of birth! ";
 
-        } while ((dayOfBirth < 1 || dayOfBirth > monthsSize[monthOfBirth - 1]) || (monthOfBirth < 1 || monthOfBirth > 12)); // (firstDay != intFifth && secondDay != intSixth)
+        } while ((dayOfBirth < 1 || dayOfBirth > monthsSize[monthOfBirth - 1]) || (monthOfBirth < 1 || monthOfBirth > 12));
 
         this->dayOfBirth = _dayOfBirth;
         this->monthOfBirth = _monthOfBirth;
@@ -300,14 +301,14 @@ string getName()
 
     // setter yearOfBirth
 
-    void setYearOfBirth(int &_yearOfBirth) // работи
+    void setYearOfBirth(int &_yearOfBirth)
     {
         do
         {
             cout << "Enter a year: ";
             cin >> yearOfBirth;
 
-            if (yearOfBirth < 1900 || yearOfBirth > 2023)
+            if (yearOfBirth < 1900 || yearOfBirth > 2023) // проверяваме дали въведената година на раждане е в диапазона 1900 - 2023
                 cout << "Please enter a valid year of birth! ";
 
         } while (yearOfBirth < 1900 || yearOfBirth > 2023);
@@ -334,8 +335,8 @@ string getName()
 
         // инициализираме цифрите от ЕГН и от датата на раждане
         char firstDigit, secondDigit, thirdDigit, fourthDigit, fifthDigit, sixthDigit; // от 1ва до 6та цифра от ЕГН в string
-		int intFirst, intSecond, intThird, intFourth, intFifth, intSixth; //от 1ва до 6та цифра от ЕГН в int
-		int firstDay, secondDay, firstMonth, secondMonth, thirdYear, fourthYear; // дд/мм/гг на раждане
+        int intFirst, intSecond, intThird, intFourth, intFifth, intSixth;              // от 1ва до 6та цифра от ЕГН в int
+        int firstDay, secondDay, firstMonth, secondMonth, thirdYear, fourthYear;       // дд/мм/гг на раждане
 
         // while цикълът ще продължи, докато няма съвпадение между първите 6 цифри от ЕГН-то и датата на раждане
         while (firstDay != intFifth || secondDay != intSixth || firstMonth != intThird || secondMonth != intFourth || thirdYear != intFirst || fourthYear != intSecond)
@@ -388,7 +389,6 @@ int main()
     // student1.birthDate();                       // getter  getDayOfBirth() + getMonthOfBirth() + getYearOfBirth()
     // cout << student1.getCity() << endl;         // getter
     // cout << student1.getTIN() << endl;          // getter
-    
 
     cout << "Student 2:" << endl;
     student2.setInfo();
