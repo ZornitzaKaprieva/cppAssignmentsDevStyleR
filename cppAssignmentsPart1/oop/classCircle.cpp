@@ -124,18 +124,14 @@ int main()
     circle1.calculatePerimeter();
     cout << circle1.getArea() << endl;
     cout << circle1.getPerimeter() << endl;
-    circle1.setArea(16);
-    circle1.setPerimeter(16);
-    cout << circle1.getArea() << endl;
-    cout << circle1.getPerimeter() << endl;
+    circle1.setArea(10);
+    cout << "Area: " << circle1.getArea() << endl;
+    circle1.setPerimeter(2);
+    cout << "Perimeter: " << circle1.getPerimeter() << endl;
 
     Circle circle2; // с втори конструктор
     circle2.setValue();
     circle2.printResult();
-    circle2.setArea(14);
-    circle2.setPerimeter(14);
-    cout << "Area: " << circle2.getArea() << endl;
-    cout << "Perimeter: " << circle2.getPerimeter() << endl;
 
     return 0;
 }
