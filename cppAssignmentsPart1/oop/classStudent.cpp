@@ -85,7 +85,7 @@ public:
     }
 
     // setter firstName //Няма да има гетери само за firstName
-    string setFirstName(string &_firstName)
+    void setFirstName(string &_firstName)
     {
         int length;
         int checkResult;
@@ -126,7 +126,7 @@ public:
     }
 
     // setter lastName //Няма да има гетери само за lastName
-    string setLastName(string &_lastName)
+    void setLastName(string &_lastName)
     {
         int length;
         int checkResult;
@@ -226,7 +226,7 @@ public:
     // setter tin. Тук проверяваме колко цифри са въведени за ЕГН. Ако не са 10, се извежда подходящо съобщение и do-while цикъла се повтаря.
     // NOTE: Ако се направи с long long int tin и while (tin > 0){ tin /= 10; counterTIN++; } и ако първата цифра от ЕГН е 0, то не се отчита (0041292332 = 8 цифри)
 
-    string setTIN(string &_tin)
+    void setTIN(string &_tin)
     {
         int length;
 
