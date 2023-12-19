@@ -229,6 +229,8 @@ public:
     void setTIN(string &_tin)
     {
         int length;
+        int checkResult;
+        bool isDigit;
 
         do
         {
@@ -243,7 +245,26 @@ public:
                 cout << "This TIN has " << length << " digits." << endl;
             }
 
-        } while (length != 10);
+            // Проверяваме дали в стринга се съдържат букви. Ако е така, следва да се въведе ЕГН отново
+            checkResult = 0;
+            for (int i = 0; i < length; i++)
+            {
+                int check = 0;
+                check = isdigit(tin[i]); // проверяваме, дали tin[i] е цифра
+                if (check)
+                {
+                    checkResult += check;
+                }
+            }
+
+            isDigit = checkResult < 10;
+
+            if (isDigit)
+            {
+                cout << "Please enter only digits for TIN: ";
+            }
+
+        } while (length != 10 || isDigit);
 
         this->tin = _tin;
     }
@@ -275,11 +296,11 @@ public:
 
             if (dayOfBirth < 1 || dayOfBirth > monthsSize[monthOfBirth - 1]) // проверяваме дали въведеният ден на раждане е по-малък от 0 или по-голям от дните на въведения месец
             {
-                cout << "Please enter a valid day of birth! ";
+                cout << "Please enter a valid day of birth!\n";
             }
 
             if (monthOfBirth < 1 || monthOfBirth > 12) // проверяваме дали въведеният месец на раждане е по-малък от 0 или по-голям от 12
-                cout << "Please enter a valid month of birth! ";
+                cout << "Please enter a valid month of birth!\n";
 
         } while ((dayOfBirth < 1 || dayOfBirth > monthsSize[monthOfBirth - 1]) || (monthOfBirth < 1 || monthOfBirth > 12));
 
