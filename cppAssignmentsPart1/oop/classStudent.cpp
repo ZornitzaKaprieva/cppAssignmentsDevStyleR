@@ -175,7 +175,7 @@ public:
     }
 
     // setter city
-    string setCity(string &_city)
+    void setCity(string &_city)
     {
         int length;
         int checkResult;
@@ -354,11 +354,19 @@ public:
         this->monthOfBirth = _monthOfBirth;
         this->yearOfBirth = yearOfBirth;
 
-        // инициализираме цифрите от ЕГН и от датата на раждане
-        char firstDigit, secondDigit, thirdDigit, fourthDigit, fifthDigit, sixthDigit; // от 1ва до 6та цифра от ЕГН в string
-        int intFirst, intSecond, intThird, intFourth, intFifth, intSixth;              // от 1ва до 6та цифра от ЕГН в int
-        int firstDay, secondDay, firstMonth, secondMonth, thirdYear, fourthYear;       // дд/мм/гг на раждане
+        // намираме кои са цифрите от въведените ЕГН и дата на раждане
+        char fifthDigit = tin[4], sixthDigit = tin[5]; // петата и шестата цифра от ЕГН в string
+        int intFifth = fifthDigit - '0', intSixth = sixthDigit - '0'; // петата и шестата цифра от ЕГН в int
+        int firstDay = dayOfBirth / 10, secondDay = dayOfBirth % 10; // ден на раждане
 
+        char thirdDigit = tin[2], fourthDigit = tin[3]; // третата и четвъртата цифра от ЕГН  в string
+        int intThird = thirdDigit - '0', intFourth = fourthDigit - '0'; // третата и четвъртата цифра от ЕГН в int
+        int firstMonth = monthOfBirth / 10, secondMonth = monthOfBirth % 10; // месец на раждане
+
+        char firstDigit = tin[0], secondDigit = tin[1]; // първата и втората цифра от ЕГН в string
+        int intFirst = firstDigit - '0', intSecond = secondDigit - '0'; // първата и втората цифра от ЕГН в int
+        int thirdYear = yearOfBirth / 10 % 10, fourthYear = yearOfBirth % 10; // последните две цифри от година на раждане
+        
         // while цикълът ще продължи, докато няма съвпадение между първите 6 цифри от ЕГН-то и датата на раждане
         while (firstDay != intFifth || secondDay != intSixth || firstMonth != intThird || secondMonth != intFourth || thirdYear != intFirst || fourthYear != intSecond)
         {
@@ -367,7 +375,7 @@ public:
             setDayAndMonthOfBirth(dayOfBirth, monthOfBirth);
             setYearOfBirth(yearOfBirth);
 
-            // намираме кои са цифрите от въведените ЕГН и дата на раждане
+            // намираме кои са нововъведените цифри за ЕГН и дата на раждане
             fifthDigit = tin[4], sixthDigit = tin[5]; // петата и шестата цифра от ЕГН
             intFifth = fifthDigit - '0', intSixth = sixthDigit - '0';
             firstDay = dayOfBirth / 10, secondDay = dayOfBirth % 10; // ден на раждане
