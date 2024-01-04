@@ -17,7 +17,7 @@ string enterText() // връща въведния стринг, който мо�
 
 void reverseText(string str) // 1. Обръщане на стринга: използваме въведения стринг от string enterText();
 {
-    cout << "Reversed, this text looks like this: ";
+    cout << "Reversed, \'" << str << "\' looks like this: ";
 
     int length = str.length();
     for (int i = length - 1; i >= 0; i--)
@@ -41,11 +41,20 @@ void countVowels(string str) // 2. Преброяване на гласните:
     cout << "Vowels in this text are: " << countV << endl;
 }
 
+void setAndGetResult()
+{
+    while (true)
+    {
+        string s = enterText();
+        system("cls");
+        reverseText(s); // можем да използваме въведения стринг s - от string enterText();
+        countVowels(s);
+    }
+}
+
 int main()
 {
-    reverseText(enterText()); // можем да използваме въведения стринг от string enterText();
-    cout << endl;
-    countVowels(enterText());
+    setAndGetResult();
 
     return 0;
 }
